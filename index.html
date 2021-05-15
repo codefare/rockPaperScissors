@@ -47,10 +47,11 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        margin-top: -40px;
+        margin-top: 10px;
     }
     h3 {
         font-size: 50px;
+        margin-right: 200px;
     }
     .imgp {
         height: 300px;
@@ -75,6 +76,32 @@
         display: flex;
         justify-content: center;
     }
+
+    .computerName {
+        height: 60px;
+        width: 250px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 30px;
+    }
+    .playerName {
+        height: 60px;
+        width: 250px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        border-radius: 30px;
+    }
+    .player {
+     display: flex;
+     position: relative;
+     right: 160px;
+     top: 10px;
+}
+label{
+    width: 200px;
+}
     
     
 </style>
@@ -88,23 +115,24 @@
         </div>
     </div>
     <div class="play-wrapper">
-        <div>
-        <h3 id="playerName">Player</h3>
+        <div id="playerName" class="playerName">
+        <h3 id="">Player</h3>
+
         <div class="player">
-            <label for="playerselction">How you want to do this? </label>
-            <select name="" id="">
+            <label for="playerselction">How you    want to do this? </label>
+                <select name="" id="">
                 <option value="#">Choose</option>
                 <option value="rock">Rock</option>
                 <option value="scissors">Scissors</option>
                 <option value="paper">Paper</option>
-            </select>
-        </div>  
-    </div>
+                </select>
+        </div> 
+        </div>
         <div class="vs">
             <h3></h3>
         </div>
-        <div class="computer">
-            <h3 id="computerName">Computer</h3>
+        <div class="computerName" id="computerName">
+            <h3 id="">Computer</h3>
         </div>
     </div>
     <div class="imagevs">
@@ -124,6 +152,7 @@ function computerPlay() {
     let num = randomnum();
     let com = assign(num);
     choicepiccomputer(com);
+    playerRound(com);
 }
 /* random computer selection*/
 function randomnum() {
@@ -156,7 +185,6 @@ function choicepiccomputer(com) {
         return compic.src = ""
     }
     randomnum();
-    playerRound();
 }
 
 /**************************************************************************************************************************************************/
@@ -167,15 +195,15 @@ let select = document.querySelector('select');
 let playerimg = document.getElementById('imgp');
 
 select.addEventListener('change', () => {
+    resetWin();
     setPlayerChoice();
-    computerPlay()
+    computerPlay()   
 });
 
 playerimg.src = "./assets/images/rock.png"
 
 function setPlayerChoice() {
     const choice = select.value;
-    choicepiccomputer()
     if (choice == 'rock') {
         playerimg.src = "./assets/images/rock.png"
     } else if (choice == 'paper') {
@@ -185,41 +213,49 @@ function setPlayerChoice() {
     } else playerimg.src = ""
 }
 
+/* reset win */
+function resetWin() {
+    let playerWin = document.getElementById('playerName');
+    let computerWin = document.getElementById('computerName');
+        computerWin.style.backgroundColor = "white";
+        playerWin.style.backgroundColor = "white";
+}
+
 /* highlight the winner */
 
-function playerRound() {
+function playerRound(com) {
+let choice2 = select.value;
 let playerWin = document.getElementById('playerName');
 let computerWin = document.getElementById('computerName');
-    if (com == 'rock' || com == 'paper' || com == 'scissors') {
-        console.log('computerwins')
-    }
 
-    /*if (setPlayerChoice == 'rock' && assign == 'paper') {
+    if (choice2 == 'rock' && com == 'paper') {
         computerWin.style.backgroundColor = "blue";
-    } else if (setPlayerChoice == 'rock' && assign == 'scissors') {
+    } else if (choice2 == 'rock' && com == 'scissors') {
         playerWin.style.backgroundColor = "blue";
-    } else if (setPlayerChoice == 'scissors' && assign == 'rock') {
+    } else if (choice2 == 'scissors' && com == 'rock') {
         computerWin.style.backgroundColor = "blue";
-    } else if (setPlayerChoice == 'scissors' && assign == 'paper') {
+    } else if (choice2 == 'scissors' && com == 'paper') {
         playerWin.style.backgroundColor = "blue";
-    } else if (setPlayerChoice == 'paper' && assign == 'scissors') {
+    } else if (choice2 == 'paper' && com == 'scissors') {
         computerWin.style.backgroundColor = "blue";
-    } else if (setPlayerChoice == 'paper' && assign == 'rock') {
+    } else if (choice2 == 'paper' && com == 'rock') {
         playerWin.style.backgroundColor = "blue";
-    } else if (setPlayerChoice == 'paper' && assign == 'paper') {
-        computerWin.style.backgroundColor = "blue";
-        playerWin.style.backgroundColor = "blue";
-    } else if (setPlayerChoice == 'scissors' && assign == 'scissors') {
+    } else if (choice2 == 'paper' && com == 'paper') {
         computerWin.style.backgroundColor = "blue";
         playerWin.style.backgroundColor = "blue";
-    } else if (setPlayerChoice == 'rock' && assign == 'rock') {
+    } else if (choice2 == 'scissors' && com == 'scissors') {
+        computerWin.style.backgroundColor = "blue";
+        playerWin.style.backgroundColor = "blue";
+    } else if (choice2 == 'rock' && com == 'rock') {
         computerWin.style.backgroundColor = "blue";
         playerWin.style.backgroundColor = "blue";
     } else {
         computerWin.style.backgroundColor = "white";
         playerWin.style.backgroundColor = "white";
-    }*/
+    }
 }
+
+
 
 
 
