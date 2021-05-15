@@ -75,6 +75,8 @@
     .vssymbol {
         display: flex;
         justify-content: center;
+        position: relative;
+        left: 150px;
     }
 
     .computerName {
@@ -102,6 +104,14 @@
 label{
     width: 200px;
 }
+.h3player {
+    padding: 5px 15px 5px 15px;
+    border-radius: 30px;
+}
+.h3com {
+    padding: 5px 15px 5px 15px;
+    border-radius: 30px;
+}
     
     
 </style>
@@ -116,7 +126,7 @@ label{
     </div>
     <div class="play-wrapper">
         <div id="playerName" class="playerName">
-        <h3 id="">Player</h3>
+        <h3 id="h3player" class="h3player">Player</h3>
 
         <div class="player">
             <label for="playerselction">How you    want to do this? </label>
@@ -132,7 +142,7 @@ label{
             <h3></h3>
         </div>
         <div class="computerName" id="computerName">
-            <h3 id="">Computer</h3>
+            <h3 id="h3com" class="h3com">Computer</h3>
         </div>
     </div>
     <div class="imagevs">
@@ -140,7 +150,7 @@ label{
             <img class="imgp" id ="imgp" src="" alt="">
         </div>
         <div class="vssymbol">
-            <h3>Vs.</h3>
+            <h3 class"h3vs">Vs.</h3>
         </div>
         <div class="imgcomputer">
             <img src="" id="comimg" class="comimg" alt="">
@@ -215,8 +225,8 @@ function setPlayerChoice() {
 
 /* reset win */
 function resetWin() {
-    let playerWin = document.getElementById('playerName');
-    let computerWin = document.getElementById('computerName');
+    let playerWin = document.getElementById('h3player');
+    let computerWin = document.getElementById('h3com');
         computerWin.style.backgroundColor = "white";
         playerWin.style.backgroundColor = "white";
 }
@@ -225,30 +235,30 @@ function resetWin() {
 
 function playerRound(com) {
 let choice2 = select.value;
-let playerWin = document.getElementById('playerName');
-let computerWin = document.getElementById('computerName');
+let playerWin = document.getElementById('h3player');
+let computerWin = document.getElementById('h3com');
 
     if (choice2 == 'rock' && com == 'paper') {
-        computerWin.style.backgroundColor = "blue";
+        computerWin.style.backgroundColor = "rgb(134, 164, 175)";
     } else if (choice2 == 'rock' && com == 'scissors') {
-        playerWin.style.backgroundColor = "blue";
+        playerWin.style.backgroundColor = "rgb(134, 164, 175)";
     } else if (choice2 == 'scissors' && com == 'rock') {
-        computerWin.style.backgroundColor = "blue";
+        computerWin.style.backgroundColor = "rgb(134, 164, 175)";
     } else if (choice2 == 'scissors' && com == 'paper') {
-        playerWin.style.backgroundColor = "blue";
+        playerWin.style.backgroundColor = "rgb(134, 164, 175)";
     } else if (choice2 == 'paper' && com == 'scissors') {
-        computerWin.style.backgroundColor = "blue";
+        computerWin.style.backgroundColor = "rgb(134, 164, 175)";
     } else if (choice2 == 'paper' && com == 'rock') {
-        playerWin.style.backgroundColor = "blue";
+        playerWin.style.backgroundColor = "rgb(134, 164, 175)";
     } else if (choice2 == 'paper' && com == 'paper') {
-        computerWin.style.backgroundColor = "blue";
-        playerWin.style.backgroundColor = "blue";
+        computerWin.style.backgroundColor = "rgb(134, 164, 175)";
+        playerWin.style.backgroundColor = "rgb(134, 164, 175)";
     } else if (choice2 == 'scissors' && com == 'scissors') {
-        computerWin.style.backgroundColor = "blue";
-        playerWin.style.backgroundColor = "blue";
+        computerWin.style.backgroundColor = "rgb(134, 164, 175)";
+        playerWin.style.backgroundColor = "rgb(134, 164, 175)";
     } else if (choice2 == 'rock' && com == 'rock') {
-        computerWin.style.backgroundColor = "blue";
-        playerWin.style.backgroundColor = "blue";
+        computerWin.style.backgroundColor = "rgb(134, 164, 175)";
+        playerWin.style.backgroundColor = "rgb(134, 164, 175)";
     } else {
         computerWin.style.backgroundColor = "white";
         playerWin.style.backgroundColor = "white";
