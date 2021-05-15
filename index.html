@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<style>
+    div {
+        margin-bottom: 0px;
+        padding-bottom: 0px;
+        margin-top: 0px;
+        padding-top: 0px;
+    }
+    .hero-wrapper {
+        margin-top: -100px;
+        display: flex;
+        margin-bottom: -20px;;
+    }
+    .hero-image-wrapper {
+        margin-left: auto;
+        height: 40vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 10rem;
+        padding-top: 6rem;
+    }
+    .hero-image {
+        height: 300px;
+        border-radius: 30px;
+        position: relative;
+        left: 50px;
+    }
+    .heading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 5rem;
+        padding-top: 5rem;
+    }
+    h1 {
+        font-size: 100px;
+    }
+    .play-wrapper {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: -40px;
+    }
+    h3 {
+        font-size: 50px;
+    }
+    .imgp {
+        height: 300px;
+        position: absolute;
+        left: 200px;
+    }
+    .comimg {
+        position: absolute;
+        right: 200px;
+
+    }
+    .imagevs {
+        margin: 20px 10px 0px 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .imagevs div {
+        height: 300px;
+        width: 200px;
+    }
+    .vssymbol {
+        display: flex;
+        justify-content: center;
+    }
+    
+    
+</style>
+<body>
+    <div class="hero-wrapper">
+        <div class="heading">
+            <h1>Rock Paper Scissors</h1>
+        </div>
+        <div class="hero-image-wrapper">
+            <img class="hero-image" src="./assets/images/hero.png" alt="">
+        </div>
+    </div>
+    <div class="play-wrapper">
+        <div>
+        <h3 id="playerName">Player</h3>
+        <div class="player">
+            <label for="playerselction">How you want to do this? </label>
+            <select name="" id="">
+                <option value="#">Choose</option>
+                <option value="rock">Rock</option>
+                <option value="scissors">Scissors</option>
+                <option value="paper">Paper</option>
+            </select>
+        </div>  
+    </div>
+        <div class="vs">
+            <h3></h3>
+        </div>
+        <div class="computer">
+            <h3 id="computerName">Computer</h3>
+        </div>
+    </div>
+    <div class="imagevs">
+        <div class="imgplayer">
+            <img class="imgp" id ="imgp" src="" alt="">
+        </div>
+        <div class="vssymbol">
+            <h3>Vs.</h3>
+        </div>
+        <div class="imgcomputer">
+            <img src="" id="comimg" class="comimg" alt="">
+        </div>
+    </div>
+<script>
+/* final computer choice*/
+function computerPlay() {
+    let num = randomnum();
+    let com = assign(num);
+    choicepiccomputer(com);
+}
+/* random computer selection*/
+function randomnum() {
+    return Math.floor(Math.random() * 4);
+}
+/* assign number to choice*/
+function assign(num) {
+    if (num == 3) {
+        return 'rock';
+    } else if (num == 2) {
+        return 'paper';
+    } else 
+        return 'scissors';
+}
+/* connect picture with choice*/
+let compic = document.getElementById('comimg');
+compic.src = "./assets/images/paper.png";
+function choicepiccomputer(com) {
+    let compic = document.getElementById('comimg');
+    if (com == 'rock') {
+        compic.style.height = "300px";
+        compic.src = "./assets/images/rock.png";
+    } else if (com == 'paper') {
+        compic.style.height = "300px";
+        compic.src = "./assets/images/paper.png";
+    } else if (com == 'scissors') {
+        compic.style.height = "300px";
+        compic.src = "./assets/images/scissors.png";
+    } else {
+        return compic.src = ""
+    }
+    randomnum();
+    playerRound();
+}
+
+/**************************************************************************************************************************************************/
+
+/* player choice */
+
+let select = document.querySelector('select');
+let playerimg = document.getElementById('imgp');
+
+select.addEventListener('change', () => {
+    setPlayerChoice();
+    computerPlay()
+});
+
+playerimg.src = "./assets/images/rock.png"
+
+function setPlayerChoice() {
+    const choice = select.value;
+    choicepiccomputer()
+    if (choice == 'rock') {
+        playerimg.src = "./assets/images/rock.png"
+    } else if (choice == 'paper') {
+        playerimg.src = "./assets/images/paper.png"
+    } else if (choice == 'scissors') {
+        playerimg.src = "./assets/images/scissors.png"
+    } else playerimg.src = ""
+}
+
+/* highlight the winner */
+
+function playerRound() {
+let playerWin = document.getElementById('playerName');
+let computerWin = document.getElementById('computerName');
+    if (com == 'rock' || com == 'paper' || com == 'scissors') {
+        console.log('computerwins')
+    }
+
+    /*if (setPlayerChoice == 'rock' && assign == 'paper') {
+        computerWin.style.backgroundColor = "blue";
+    } else if (setPlayerChoice == 'rock' && assign == 'scissors') {
+        playerWin.style.backgroundColor = "blue";
+    } else if (setPlayerChoice == 'scissors' && assign == 'rock') {
+        computerWin.style.backgroundColor = "blue";
+    } else if (setPlayerChoice == 'scissors' && assign == 'paper') {
+        playerWin.style.backgroundColor = "blue";
+    } else if (setPlayerChoice == 'paper' && assign == 'scissors') {
+        computerWin.style.backgroundColor = "blue";
+    } else if (setPlayerChoice == 'paper' && assign == 'rock') {
+        playerWin.style.backgroundColor = "blue";
+    } else if (setPlayerChoice == 'paper' && assign == 'paper') {
+        computerWin.style.backgroundColor = "blue";
+        playerWin.style.backgroundColor = "blue";
+    } else if (setPlayerChoice == 'scissors' && assign == 'scissors') {
+        computerWin.style.backgroundColor = "blue";
+        playerWin.style.backgroundColor = "blue";
+    } else if (setPlayerChoice == 'rock' && assign == 'rock') {
+        computerWin.style.backgroundColor = "blue";
+        playerWin.style.backgroundColor = "blue";
+    } else {
+        computerWin.style.backgroundColor = "white";
+        playerWin.style.backgroundColor = "white";
+    }*/
+}
+
+
+
+</script>
+</body>
+</html>
